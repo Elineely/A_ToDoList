@@ -9,37 +9,16 @@ app.set("view engine", "ejs");
 app.get("/",function(req, res){
 
   var today = new Date();
-  var day = today.getDay();
-  var result = "";
+  var options = {
+    weekday : "long",
+    day : "numeric",
+    month : "long",
+    year : "numeric"
+  };
 
-  switch (day) {
-    case 0 :
-    result = "Sunday";
-    break;
-    case 1 :
-    result = "Monday";
-    break;
-    case 2 :
-    result = "Tuesday";
-    break;
-    case 3 :
-    result = "Wendnesday";
-    break;
-    case 4 :
-    result = "Thursday";
-    break;
-    case 5 :
-    result = "Friday";
-    break;
-    case 6 :
-    result = "Saturday";
-    break;
+  var day = today.toLocaleDateString("en-KR", options);
 
-    default :
-    console.log("The result is " + result +".");
-  }
-
-    res.render('list', { kindOfDay : result });
+  res.render('list', { kindOfDay : day });
 
 });
 
