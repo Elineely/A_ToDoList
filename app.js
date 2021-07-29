@@ -12,6 +12,8 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(express.static("public"));
 
+
+
 app.get("/",function(req, res){
 
   let today = new Date();
@@ -34,6 +36,13 @@ app.get("/work",function(req, res){
 
 });
 
+app.get("/contact", function(req, res){
+  res.render("contact");
+  console.log("Server is running on port 3000");
+});
+
+
+
 app.post("/", function(req, res){
   if(req.body.list === "Work"){
     workToDo.push(req.body.newItem);
@@ -44,6 +53,8 @@ app.post("/", function(req, res){
   };
 
 });
+
+
 
 app.listen(3000, function(req, res){
   console.log("Server is running on port 3000");
