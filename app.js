@@ -5,8 +5,8 @@ const date = require(__dirname + "/date.js")
 
 const app = express();
 
-let thingsToDo = ["take a class","work out", "take a walk"];
-let workToDo = [];
+const thingsToDo = ["take a class","work out", "take a walk"];
+const workToDo = [];
 
 app.set("view engine", "ejs");
 
@@ -16,7 +16,7 @@ app.use(express.static("public"));
 
 
 app.get("/",function(req, res){
-  let day = date();
+  const day = date.getDate();
 
   res.render("list", { listTitle : day, newItems : thingsToDo});
 
